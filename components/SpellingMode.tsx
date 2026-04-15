@@ -12,24 +12,32 @@ function shuffle<T>(arr: T[]): T[] {
   return a;
 }
 
-type Status = "idle" | "correct" | "wrong" | "revealed";
+type Status = "idle" | "correct" | "wrong" | "retyping" | "revealed";
 
 export default function SpellingMode() {
   const [queue, setQueue] = useState<Term[]>(() => shuffle(TERMS));
   const [index, setIndex] = useState(0);
   const [input, setInput] = useState("");
+  const [retypeInput, setRetypeInput] = useState("");
   const [status, setStatus] = useState<Status>("idle");
   const [streak, setStreak] = useState(0);
   const [mastered, setMastered] = useState<Set<string>>(new Set());
   const [wrongIds, setWrongIds] = useState<Set<string>>(new Set());
   const [showHint, setShowHint] = useState(false);
   const inputRef = useRef<HTMLInputElement>(null);
+  const retypeRef = useRef<HTMLInputElement>(null);
 
   const current = queue[index % queue.length];
 
   useEffect(() => {
     inputRef.current?.focus();
   }, [index]);
+
+  useEffect(() => {
+    if (status === "retyping") {
+      retypeRef.current?.focus();
+    }
+  }, [status]);
 
   const normalize = (s: string) => s.trim().toLowerCase();
 
@@ -54,15 +62,22 @@ export default function SpellingMode() {
     }
   }, [input, current]);
 
+  const checkRetype = useCallback(() => {
+    if (normalize(retypeInput) === normalize(current.term)) {
+      next();
+    }
+  }, [retypeInput, current]);
+
   const next = () => {
     setInput("");
+    setRetypeInput("");
     setStatus("idle");
     setShowHint(false);
     setIndex((i) => i + 1);
   };
 
   const reveal = () => {
-    setStatus("revealed");
+    setStatus("retyping");
     setWrongIds((w) => new Set([...w, current.id]));
     setStreak(0);
   };
@@ -73,6 +88,7 @@ export default function SpellingMode() {
     setQueue(shuffle(wrongTerms));
     setIndex(0);
     setInput("");
+    setRetypeInput("");
     setStatus("idle");
     setShowHint(false);
     setWrongIds(new Set());
@@ -83,6 +99,7 @@ export default function SpellingMode() {
     setQueue(shuffle(TERMS));
     setIndex(0);
     setInput("");
+    setRetypeInput("");
     setStatus("idle");
     setShowHint(false);
     setWrongIds(new Set());
@@ -90,10 +107,8 @@ export default function SpellingMode() {
     setStreak(0);
   };
 
-  // Highlight character-by-character diff
-  const renderDiff = () => {
+  const renderDiff = (given: string) => {
     const answer = current.term;
-    const given = input;
     return (
       <div className="flex flex-wrap gap-0.5 justify-center text-2xl font-mono mt-2">
         {answer.split("").map((char, i) => {
@@ -113,6 +128,7 @@ export default function SpellingMode() {
   };
 
   const progressPct = Math.round((mastered.size / TERMS.length) * 100);
+  const retypeCorrect = normalize(retypeInput) === normalize(current.term);
 
   return (
     <div className="flex flex-col gap-6 max-w-2xl mx-auto">
@@ -154,7 +170,6 @@ export default function SpellingMode() {
           </button>
         </div>
 
-        {/* Definition */}
         <p className="text-zinc-200 text-lg leading-relaxed">{current.definition}</p>
 
         {showHint && current.tags && (
@@ -170,28 +185,37 @@ export default function SpellingMode() {
           </div>
         )}
 
-        {/* Input */}
+        {/* IDLE: first attempt */}
         {status === "idle" && (
-          <div className="flex gap-2">
-            <input
-              ref={inputRef}
-              value={input}
-              onChange={(e) => setInput(e.target.value)}
-              onKeyDown={(e) => e.key === "Enter" && checkAnswer()}
-              placeholder="Type the term…"
-              className="flex-1 bg-zinc-800 border border-zinc-600 rounded-lg px-4 py-3 text-white text-lg focus:outline-none focus:border-indigo-500 placeholder:text-zinc-600"
-              spellCheck={false}
-              autoComplete="off"
-            />
+          <>
+            <div className="flex gap-2">
+              <input
+                ref={inputRef}
+                value={input}
+                onChange={(e) => setInput(e.target.value)}
+                onKeyDown={(e) => e.key === "Enter" && checkAnswer()}
+                placeholder="Type the term…"
+                className="flex-1 bg-zinc-800 border border-zinc-600 rounded-lg px-4 py-3 text-white text-lg focus:outline-none focus:border-indigo-500 placeholder:text-zinc-600"
+                spellCheck={false}
+                autoComplete="off"
+              />
+              <button
+                onClick={checkAnswer}
+                className="px-4 py-3 bg-indigo-600 hover:bg-indigo-500 text-white rounded-lg font-semibold transition-colors"
+              >
+                Check
+              </button>
+            </div>
             <button
-              onClick={checkAnswer}
-              className="px-4 py-3 bg-indigo-600 hover:bg-indigo-500 text-white rounded-lg font-semibold transition-colors"
+              onClick={reveal}
+              className="text-sm text-zinc-500 hover:text-zinc-300 underline text-center"
             >
-              Check
+              I don&apos;t know — reveal answer
             </button>
-          </div>
+          </>
         )}
 
+        {/* CORRECT */}
         {status === "correct" && (
           <div className="flex flex-col gap-3">
             <div className="bg-emerald-900/40 border border-emerald-700 rounded-lg p-4 flex items-center gap-3">
@@ -210,61 +234,69 @@ export default function SpellingMode() {
           </div>
         )}
 
+        {/* WRONG: show diff, then require retyping */}
         {status === "wrong" && (
           <div className="flex flex-col gap-3">
             <div className="bg-red-900/30 border border-red-800 rounded-lg p-4">
               <p className="text-red-400 font-semibold mb-1">Not quite. You typed:</p>
               <p className="font-mono text-lg text-red-300">{input}</p>
-              <p className="text-zinc-400 text-sm mt-1">Correct answer (character diff):</p>
-              {renderDiff()}
-            </div>
-            <div className="flex gap-2">
-              <button
-                onClick={() => {
-                  setInput("");
-                  setStatus("idle");
-                  inputRef.current?.focus();
-                }}
-                className="flex-1 py-3 bg-indigo-700 hover:bg-indigo-600 text-white rounded-lg font-semibold transition-colors"
-              >
-                Try Again
-              </button>
-              <button
-                onClick={next}
-                className="flex-1 py-3 bg-zinc-700 hover:bg-zinc-600 text-white rounded-lg font-semibold transition-colors"
-              >
-                Skip →
-              </button>
-            </div>
-          </div>
-        )}
-
-        {status === "revealed" && (
-          <div className="flex flex-col gap-3">
-            <div className="bg-zinc-800 border border-zinc-600 rounded-lg p-4">
-              <p className="text-zinc-400 text-sm mb-1">Answer:</p>
-              <p className="font-mono text-2xl text-white">{current.term}</p>
+              <p className="text-zinc-400 text-sm mt-2">Correct spelling (diff):</p>
+              {renderDiff(input)}
             </div>
             <button
-              onClick={next}
-              className="w-full py-3 bg-zinc-700 hover:bg-zinc-600 text-white rounded-lg font-semibold transition-colors"
+              onClick={() => setStatus("retyping")}
+              className="w-full py-3 bg-indigo-700 hover:bg-indigo-600 text-white rounded-lg font-semibold transition-colors"
             >
-              Next →
+              Type it correctly to continue →
             </button>
           </div>
         )}
 
-        {status === "idle" && (
-          <button
-            onClick={reveal}
-            className="text-sm text-zinc-500 hover:text-zinc-300 underline text-center"
-          >
-            I don&apos;t know — reveal answer
-          </button>
+        {/* RETYPING: must type the correct answer exactly */}
+        {status === "retyping" && (
+          <div className="flex flex-col gap-3">
+            <div className="bg-zinc-800 border border-zinc-600 rounded-lg p-3 text-center">
+              <p className="text-zinc-400 text-xs uppercase tracking-wide font-semibold mb-1">
+                Correct answer
+              </p>
+              <p className="font-mono text-xl text-white">{current.term}</p>
+            </div>
+            <p className="text-zinc-400 text-sm text-center">
+              Type the correct spelling to move on:
+            </p>
+            <div className="flex gap-2">
+              <input
+                ref={retypeRef}
+                value={retypeInput}
+                onChange={(e) => setRetypeInput(e.target.value)}
+                onKeyDown={(e) => e.key === "Enter" && checkRetype()}
+                placeholder={`Type "${current.term}"…`}
+                className={`flex-1 bg-zinc-800 border rounded-lg px-4 py-3 text-white text-lg focus:outline-none placeholder:text-zinc-600 transition-colors ${
+                  retypeCorrect
+                    ? "border-emerald-500 focus:border-emerald-400"
+                    : "border-zinc-600 focus:border-indigo-500"
+                }`}
+                spellCheck={false}
+                autoComplete="off"
+              />
+              <button
+                onClick={checkRetype}
+                disabled={!retypeCorrect}
+                className="px-4 py-3 bg-emerald-700 hover:bg-emerald-600 disabled:bg-zinc-700 disabled:text-zinc-500 text-white rounded-lg font-semibold transition-colors"
+              >
+                Next →
+              </button>
+            </div>
+            {retypeCorrect && (
+              <p className="text-emerald-400 text-sm text-center">
+                ✓ Correct — press Next to continue
+              </p>
+            )}
+          </div>
         )}
       </div>
 
-      {/* Action buttons */}
+      {/* Bottom actions */}
       <div className="flex gap-3">
         {wrongIds.size > 0 && (
           <button

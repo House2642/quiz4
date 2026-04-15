@@ -17,43 +17,42 @@ export interface ConnectionQuestion {
 export const COMPARE_QUESTIONS: CompareQuestion[] = [
   {
     id: "cave1-vs-cave19",
-    question: "How do Ajanta Cave 1 and Ajanta Cave 19 differ in function, form, and content?",
+    question: "How do Ajanta Cave 1 and Ajanta Cave 19 differ in function, architectural type, and content?",
     itemA: "Ajanta Cave 1",
     itemB: "Ajanta Cave 19",
     hints: [
-      "Think about the PURPOSE of each cave — one is for living/meditating, one is for communal worship",
-      "One contains famous paintings; the other is known more for its sculptural facade",
-      "What architectural types do they represent? (vihara vs. chaitya)",
+      "One is a vihara (monastery/living space with shrine); the other is a chaitya (prayer hall). Which is which?",
+      "Cave 1 is famous for its PAINTINGS. Cave 19 is famous for its SCULPTURAL FACADE and a specific Buddha pose.",
+      "Cave 19 combines two traditions — what older and newer architectural elements does it blend?",
     ],
     answer:
-      "Cave 1 is a VIHARA (monastery hall): a rectangular hall with monk cells around the walls, used for monastic living and private devotion. It is celebrated for its PAINTINGS — including Padmapani and Vajrapani flanking the main shrine. Cave 19 is a CHAITYA GRIHA (prayer/worship hall): an apsidal hall with a stupa at the far end, used for communal worship. It has an elaborate SCULPTURAL FACADE with a large horseshoe window (chandrasala) that floods the interior with light. Cave 1 → paintings, monastery life. Cave 19 → sculpture, communal prayer, stupa.",
+      "CAVE 1 is a VIHARA (monastery hall): pillared porch leading to a womb chamber in the back (imitating Sanchi Temple 17). Famous for its WALL PAINTINGS — Bodhisattvas Padmapani and Vajrapani flank the central Buddha making the dharmachakra mudra. Pointed arch motifs are stylistic, not structural. CAVE 19 is a CHAITYA GRIHA (prayer hall): contains a stupa and a carved façade. Shows a transition to more developed sculptural decoration. It combines older stupa architecture with newer temple architecture. The standing Buddha grants a 'boon' (answering prayer); his hem slashes his shin, creating a border around his body, with snail-shell curls. KEY CONTRAST: Cave 1 → painting, monastery life, Bodhisattva imagery. Cave 19 → sculpture, communal worship, stupa, Buddha in boon-granting pose.",
   },
   {
-    id: "padmapani-vs-vajrapani",
-    question: "Compare and contrast Padmapani and Vajrapani as depicted in Ajanta Cave 1.",
+    id: "gupta-vs-kushana",
+    question: "How does the Gupta style (Bodhgaya Buddha of Year 64) differ from the Kushana style (Govindhnagar Buddha / Bamiyan)?",
+    itemA: "Kushana Style (Govindhnagar / Bamiyan)",
+    itemB: "Gupta Style (Bodhgaya Buddha of Year 64)",
+    hints: [
+      "Think about drapery — Kushana covers both shoulders; what does Gupta do?",
+      "Think about the facial expression and body — Kushana is broad, Yaksha-like, cheerful. What shifts in Gupta?",
+      "Bamiyan is a hybrid — what two styles overlap there?",
+    ],
+    answer:
+      "KUSHANA STYLE (Govindhnagar Buddha, Bamiyan): Heavier drapery covering both shoulders. Broader shoulders, Yaksha-like physicality, cheerful expression. More assertive, physical presence. GUPTA STYLE (Bodhgaya Year 64): Moving away from Yaksha style — shoulders not as broad, face more introspective. Emphasis on curved lines, soft modeling, calm spiritual expression. Cheerfulness is gone. Stylistic differences in hair treatment. BAMIYAN is a HYBRID: Kushana-style drapery (heavier, both shoulders covered) overlapping with Gupta 'pan-South Asian' style. Would have had a wooden facade; face is missing. Painted caves show Central Asian influence in the clothing.",
+  },
+  {
+    id: "cave1-paintings",
+    question: "Compare Padmapani and Vajrapani as they appear in Ajanta Cave 1.",
     itemA: "Padmapani",
     itemB: "Vajrapani",
     hints: [
-      "What object does each hold? That's their defining attribute and what their name means",
-      "Think about mood/emotion: one is gentle and compassionate, the other is powerful and protective",
-      "Both are Bodhisattvas, but they represent opposite qualities",
+      "What does each one HOLD? Their names literally tell you.",
+      "Think about mood and symbolic role — one is gentle compassion, the other is power and protection.",
+      "Both flank the central Buddha — what does each represent as a pair?",
     ],
     answer:
-      "Both appear as large painted figures flanking the shrine in Cave 1. PADMAPANI ('lotus-bearer') holds a blue lotus, has a gentle, contemplative expression, and embodies COMPASSION — he is a form of Avalokiteshvara. His posture is relaxed with a slight tribhanga (triple-flexion). VAJRAPANI ('thunderbolt-bearer') holds a vajra (thunderbolt), appears darker and more muscular, and embodies POWER and PROTECTION. He is the wrathful guardian aspect. Together they represent the duality of Buddhist virtue: gentle compassion vs. fierce protection.",
-  },
-  {
-    id: "nagara-vs-dravida",
-    question:
-      "What are the key differences between northern (Nagara) and southern (Dravida) Indian temple styles? Give examples.",
-    itemA: "Nagara style (Northern)",
-    itemB: "Dravida style (Southern)",
-    hints: [
-      "Focus on the tower shape — one is curved and beehive-like, the other is stepped and pyramidal",
-      "What sits on top of each tower?",
-      "Think about the examples: Khajuraho, Devgarh, Mukteshvara vs. Mamallapuram, Shore Temple",
-    ],
-    answer:
-      "NAGARA (North): The tower (shikhara) is curvilinear/beehive-shaped, tapering to a point capped by an amalaka (ribbed stone disc) and a pot-finial. The entire tower curves smoothly. Examples: Devgarh (5th c.), Mukteshvara Temple (10th c.), Khandariya Mahadeva at Khajuraho (11th c.). DRAVIDA (South): The tower (vimana/gopuram) is pyramidal with horizontal tiers, getting smaller toward the top, crowned by a barrel-vaulted capstone (shikhara). Examples: Five Rathas, Shore Temple, Descent of Ganges site (all Pallava, Mamallapuram). Key mnemonic: Nagara = curvy North; Dravida = tiered/stepped South.",
+      "Both are Bodhisattvas painted as large flanking figures beside the central Buddha shrine in Cave 1. PADMAPANI ('lotus-bearer'): holds a blue lotus, gentle and compassionate expression, embodies PURITY AND COMPASSION. He is a form of Avalokiteshvara. VAJRAPANI ('lightning bolt-bearer'): holds a vajra (thunderbolt), symbolizes STRENGTH AND POWER — a protective, forceful counterpart. TOGETHER they frame the Buddha as complementary qualities: compassionate mercy (Padmapani) and powerful protection (Vajrapani).",
   },
   {
     id: "abhaya-vs-dharmachakra",
@@ -61,96 +60,95 @@ export const COMPARE_QUESTIONS: CompareQuestion[] = [
     itemA: "Abhaya mudra",
     itemB: "Dharmachakra mudra",
     hints: [
-      "Both are Buddhist hand gestures, but one is about protection and one is about teaching",
-      "Where is the hand/are the hands positioned? What direction does the palm face?",
-      "Which one relates to the Buddha's first sermon?",
+      "Abhaya = freedom from FEAR. What does the hand do physically?",
+      "Dharmachakra = preaching the LAW / turning the wheel. Where are both hands and what do they form?",
+      "Which one is specifically associated with the Buddha's first sermon?",
     ],
     answer:
-      "ABHAYA MUDRA: One hand (usually right) raised to shoulder height with palm facing OUTWARD. Meaning: 'fear not' — a gesture of protection, blessing, and reassurance. Used across both Buddhist and Hindu iconography. DHARMACHAKRA MUDRA: Both hands held at CHEST level, thumbs and forefingers touching to form wheel shapes. Meaning: 'turning the wheel of Dharma' — represents the Buddha's FIRST SERMON at Sarnath. Specific to the moment of teaching. The dharmachakra mudra shows active teaching; the abhaya mudra shows protective blessing.",
+      "ABHAYA MUDRA: One hand raised, palm facing outward. Gesture of FREEDOM FROM FEAR — offering protection and reassurance. Used in both Buddhist and Hindu iconography. DHARMACHAKRA MUDRA: Both hands held at chest level, fingers forming a wheel shape. Gesture of PREACHING THE LAW — the turning of the wheel of Dharma, associated with the Buddha's first sermon. The Buddha in the garbhagriha of Ajanta Cave 1 makes the dharmachakra mudra.",
   },
   {
-    id: "elephanta-vs-mamallapuram",
-    question: "How do Elephanta and Mamallapuram compare as Gupta/post-Gupta era sites?",
-    itemA: "Elephanta",
-    itemB: "Mamallapuram",
+    id: "devgarh-vs-elephanta",
+    question: "Compare Devgarh Temple and Elephanta as Gupta-era religious sites.",
+    itemA: "Devgarh Temple",
+    itemB: "Elephanta",
     hints: [
-      "One is dedicated primarily to Shiva; the other has multiple deities and temple types",
-      "Think about the medium — both are rock-cut, but one also has free-standing structures",
-      "One is in western India (near Mumbai), the other is in Tamil Nadu on the coast",
+      "One is dedicated to Vishnu, the other to Shiva. Which is which?",
+      "One is a structural (built) temple; the other is a rock-cut cave. Which is which?",
+      "What is the key visual/symbolic program of each — what is the main story told?",
     ],
     answer:
-      "ELEPHANTA (late 6th c., near Mumbai): A CAVE temple complex dedicated primarily to SHIVA. Famous for the monumental three-headed Shiva (Maheshmurti/Trimurti), Shiva Ardhanari, and Shiva Nataraja. All rock-cut, no free-standing structures. Late Gupta/post-Gupta western India style. MAMALLAPURAM (7th–8th c., Tamil Nadu): A COASTAL Pallava site combining rock-cut reliefs (Descent of the Ganges), monolithic rock-cut rathas (Five Rathas), and a free-standing structural temple (Shore Temple). Involves both Shaiva and Vaishnava iconography. Represents the Dravida (southern) tradition. Key contrast: Elephanta = single-deity cave program; Mamallapuram = diverse program with multiple building types.",
+      "DEVGARH (5th c.): STRUCTURAL Hindu temple, dedicated to VISHNU. On a raised platform with mini shrines surrounding the main shrine. Three 'blind windows' with narrative reliefs. Key image: Vishnu sleeping on the cosmic serpent on the primordial ocean — Brahma emerges from a lotus from Vishnu's navel, representing the moment before creation. Interior is deliberately bare (atman — the invisible divine presence within). ELEPHANTA (late 6th c.): ROCK-CUT cave temple, dedicated to SHIVA. Known for the Three-headed Shiva (creation, preservation, destruction) and Shiva Ardhanari (half male/female). Reliefs were damaged by Portuguese artillery fire. KEY CONTRAST: Devgarh = built structural temple, Vishnu, cosmic creation narrative. Elephanta = cave temple, Shiva, multiple aspects of Shiva in monumental relief.",
   },
   {
-    id: "linga-vs-murti",
-    question: "What is the significance of the linga as an aniconic form, and how does it contrast with figural (murti) representations of Shiva?",
-    itemA: "linga (aniconic)",
-    itemB: "Figural Shiva (Three-headed, Ardhanari, Nataraja)",
+    id: "north-vs-south-temples",
+    question: "Using examples from the term list, what distinguishes northern (Nagara) from southern (Dravida) Indian temple styles?",
+    itemA: "Nagara / Northern Style",
+    itemB: "Dravida / Southern Style",
     hints: [
-      "Aniconic means non-representational — no human or animal form",
-      "The linga is abstract; the figural forms each tell a specific story or embody a specific aspect",
-      "Think about where you find each: garbhagriha vs. outer walls",
+      "Think about the tower shape — one is curvilinear/beehive, the other is stepped/pyramidal.",
+      "Northern examples: Devgarh, Mukteshvara, Khandirya Mahadev. Southern examples: Five Rathas, Shore Temple, Mamallapuram.",
+      "What is the geographic and dynastic context for each?",
     ],
     answer:
-      "The LINGA is an ANICONIC symbol — a smooth cylindrical form (often set in a yoni base) that represents Shiva's transcendent, cosmic, formless energy. It resides in the GARBHAGRIHA (inner sanctuary) as the primary cult object — the heart of Shaiva worship. FIGURAL forms (murti) of Shiva — the three-headed Trimurti (Elephanta), Ardhanari (half-male/half-female), Nataraja (Lord of Dance) — appear on OUTER WALLS and in antechambers. They narrate Shiva's aspects and powers through iconographic attributes (trishula, nandi, multiple arms). The contrast is abstract/universal (linga) vs. specific/narrative (murti).",
+      "NAGARA (NORTH): Curvilinear shikhara tower tapering to a point. Examples: Devgarh Temple (5th c., Gupta), Mukteshvara Temple (10th c., Bhubaneswar), Khandirya Mahadev (11th c., Khajuraho). DRAVIDA (SOUTH): Pyramidal tower with stacked horizontal tiers, crowned by a barrel-vaulted top. Examples: Five Rathas (7th c., Mamallapuram, Pallava), Shore Temple (8th c., Mamallapuram), the site of the Descent of the Ganges relief. KEY MNEMONIC: Nagara = curvy North; Dravida = tiered South.",
   },
   {
-    id: "anuradhapura-vs-polonnaruwa",
-    question:
-      "Compare the Buddhist sites of Anuradhapura and Polonnaruwa (Gal Vihara) in Sri Lanka.",
-    itemA: "Anuradhapura",
-    itemB: "Gal Vihara, Polonnaruwa",
+    id: "linga-vs-figural-shiva",
+    question: "What is the relationship between the linga (aniconic form) and figural representations of Shiva like the Three-headed Shiva and Ardhanari?",
+    itemA: "Linga (aniconic)",
+    itemB: "Three-headed Shiva / Shiva Ardhanari (figural)",
     hints: [
-      "One is an ancient capital with massive stupas; the other is a later capital with rock-cut Buddhas",
-      "Think about time period — one is much older",
-      "What is the most distinctive feature of each?",
+      "Aniconic = no human form. Where in the temple is the linga placed?",
+      "Figural forms are on the OUTER walls — they tell specific stories. What do the Three-headed and Ardhanari forms each communicate?",
+      "Think of the garbhagriha — what is the relationship between the linga inside and the carvings outside?",
     ],
     answer:
-      "ANURADHAPURA: Ancient capital of Sri Lanka (c. 4th century BCE – 10th century CE). Known for massive DAGOBAS (stupas) such as the Ruwanwelisaya, and the sacred Sri Maha Bodhi (fig tree). Represents early Theravada Buddhist architecture. POLONNARUWA / GAL VIHARA: Later capital (10th–13th century CE). Known for the 12th-century Gal Vihara, a rock-cut shrine with colossal Buddha figures carved from a single granite face: seated meditating Buddha (in dhyana mudra), standing Buddha, and a 15-meter reclining Buddha in PARINIRVANA. Polonnaruwa shows a mature, monumental rock-cut tradition in contrast to Anuradhapura's stupa-centered program.",
+      "LINGA: Aniconic (non-figurative) form of Shiva — a smooth column placed in the GARBHAGRIHA (womb-chamber). Represents the inner mystery of divinity beyond expression; Shiva as transcendent, formless energy. FIGURAL SHIVA (Three-headed, Ardhanari): Appear on OUTER walls and in cave panels (Elephanta). THREE-HEADED SHIVA shows Shiva's three cosmic aspects: creation, preservation, destruction. SHIVA ARDHANARI shows Shiva as half-male / half-female — unity of masculine and feminine. The contrast is: linga = formless, universal, sacred interior; figural = narrative, specific, visible exterior.",
   },
 ];
 
 export const CONNECTION_QUESTIONS: ConnectionQuestion[] = [
   {
-    id: "cave1-figures",
-    prompt: "Name the two major Bodhisattvas painted in Ajanta Cave 1 and explain their symbolic contrast.",
+    id: "ajanta-cave1-figures",
+    prompt: "Name the two Bodhisattvas flanking the Buddha in Ajanta Cave 1 and explain what each holds and represents.",
     answer:
-      "PADMAPANI (lotus-bearer = compassion) and VAJRAPANI (thunderbolt-bearer = power/protection). They flank the shrine and represent the dual qualities of the Bodhisattva ideal: gentle mercy vs. fierce guardianship.",
-    relatedTermIds: ["ajanta-cave-1", "padmapani", "vajrapani", "avalokiteshvara"],
+      "PADMAPANI holds a blue lotus — symbolizes purity and compassion. He is a form of Avalokiteshvara, the Bodhisattva of infinite compassion. VAJRAPANI holds a thunderbolt (vajra) — symbolizes strength and power. Together they frame the central Buddha (in dharmachakra mudra) as complementary qualities: gentle mercy and fierce protection.",
+    relatedTermIds: ["ajanta-cave-1", "padmapani", "vajrapani", "avalokiteshvara", "dharmachakra-mudra"],
   },
   {
-    id: "shiva-forms",
-    prompt: "What are three different forms/aspects of Shiva found in this term list, and where is each encountered?",
+    id: "shiva-aspects",
+    prompt: "List all the forms/aspects/attributes of Shiva that appear in the term list. Where is each found?",
     answer:
-      "1. LINGA (aniconic, in garbhagriha of any Shaiva temple). 2. THREE-HEADED SHIVA / TRIMURTI (Elephanta, colossal bust showing creator/preserver/destroyer). 3. SHIVA ARDHANARI (Elephanta, half-male/half-female). Also: Shiva's attributes include NANDI (bull vehicle), TRISHULA (trident), and KAILASH (his mountain home).",
-    relatedTermIds: ["linga", "three-headed-shiva", "shiva-ardhanari", "nandi", "trishula", "kailash"],
+      "1. LINGA — aniconic form, found in garbhagriha of any Shaiva temple. 2. THREE-HEADED SHIVA (Trimurti) — at Elephanta; creation, preservation, destruction. 3. SHIVA ARDHANARI — at Elephanta; half-male/half-female, unity of principles. 4. KAILASH — his mountain home, symbolic in cosmology. 5. NANDI — his bull vehicle, stands facing the shrine. 6. TRISHULA — his trident, symbolizes power and three cosmic functions.",
+    relatedTermIds: ["linga", "three-headed-shiva", "shiva-ardhanari", "kailash", "nandi", "trishula"],
   },
   {
-    id: "temple-parts",
-    prompt: "Trace the path a worshipper takes through a Hindu temple, naming the architectural spaces in order.",
-    answer:
-      "Entry through the TORANA (gateway arch) → cross the MOONSTONE threshold (in Sri Lankan tradition) → enter the MANDAPA (pillared hall/pavilion) → proceed to the GARBHAGRIHA (womb-chamber/inner sanctuary) where the primary deity (e.g., a LINGA) resides beneath the shikhara tower.",
-    relatedTermIds: ["torana", "moonstone", "mandapa", "garbhagriha", "linga"],
-  },
-  {
-    id: "bodhisattvas",
-    prompt: "List all the Bodhisattvas/Buddhist figures in the term list and identify their defining attributes.",
-    answer:
-      "1. AVALOKITESHVARA — Bodhisattva of infinite compassion (Mahayana). 2. PADMAPANI — form of Avalokiteshvara, holds blue LOTUS. 3. VAJRAPANI — holds THUNDERBOLT (vajra), protector. 4. TARA — female Bodhisattva, compassion, consort of Avalokiteshvara. All appear in later (Mahayana) Buddhist art at sites like Ajanta.",
-    relatedTermIds: ["avalokiteshvara", "padmapani", "vajrapani", "tara"],
-  },
-  {
-    id: "pallava-sites",
+    id: "mamallapuram-program",
     prompt: "What monuments at Mamallapuram form a coherent Pallava artistic program? What links them?",
     answer:
-      "All three are 7th–8th century PALLAVA dynasty works in Tamil Nadu: 1. DESCENT OF THE GANGES — colossal rock-cut granite relief, natural rock cleft used as Ganges. 2. FIVE RATHAS — five monolithic rock-cut chariot-temples, each in a different regional style. 3. SHORE TEMPLE — earliest free-standing structural temple in South India, two sanctuaries (Shiva + Vishnu). They collectively demonstrate the Pallava transition from rock-cut to free-standing architecture and the DRAVIDA style.",
+      "All are 7th–8th-century PALLAVA dynasty works in Tamil Nadu: 1. DESCENT OF THE GANGES — colossal rock-cut granite relief, 7th century; Shiva catches the Ganges in his hair. 2. FIVE RATHAS — monolithic rock-cut chariot-temples, 7th century; hypothesized as an architectural teaching tool with miniaturized, unconsecrated shrines representing different temple forms. 3. SHORE TEMPLE — 8th-century free-standing structural temple; one of the earliest stone temples in South India, with two sanctuaries. They collectively show the Pallava transition from rock-cut to structural architecture and exemplify the Dravida (southern) style.",
     relatedTermIds: ["descent-river-ganges", "five-rathas", "shore-temple", "mamallapuram", "ratha"],
   },
   {
-    id: "parinirvana-connection",
-    prompt: "What is parinirvana, and which site in the term list depicts it? What does the artistic form look like?",
+    id: "temple-path",
+    prompt: "Trace the path a worshipper takes through a Hindu temple using the architectural terms from the list.",
     answer:
-      "PARINIRVANA is the final nirvana — the death of the historical Buddha, his passing beyond rebirth. Depicted at GAL VIHARA, Polonnaruwa: a 15-meter reclining Buddha carved in granite, lying on his right side with eyes closed, entering final release. The reclining pose is the canonical artistic representation of parinirvana across Buddhist cultures.",
-    relatedTermIds: ["parinirvana", "gal-vihara"],
+      "Enter through the TORANA (gateway) → pass through the MANDAPA (pillared pavilion/hall) → enter the GARBHAGRIHA (womb-chamber), the windowless inner sanctuary representing the mystery of divinity beyond expression. In a Shaiva temple, the garbhagriha contains the LINGA (aniconic form of Shiva). NANDI, Shiva's bull, typically sits facing the shrine from outside.",
+    relatedTermIds: ["torana", "mandapa", "garbhagriha", "linga", "nandi"],
+  },
+  {
+    id: "sri-lanka-sites",
+    prompt: "What do Anuradhapura, Golvihara (Polonnaruwa), Sigiriya, and the Moonstone have in common, and how do they differ?",
+    answer:
+      "All are Sri Lankan sites. ANURADHAPURA — ancient capital; Buddhist center with massive stupas and the sacred Bodhi tree sapling from Bodhgaya. GOLVIHARA, POLONNARUWA — rock-cut Buddha statues including a reclining Buddha in parinirvana. SIGIRIYA — a royal rock fortress with fresco paintings; NOT primarily a religious site. MOONSTONE — decorative semi-circular threshold stone at temple entrances, symbolizing the cycle of life. Anuradhapura and Golvihara are Buddhist religious sites; Sigiriya is royal/secular; the Moonstone is an architectural feature found across Sri Lankan Buddhist temples.",
+    relatedTermIds: ["anuradhapura", "gal-vihara", "sigiriya", "moonstone", "parinirvana"],
+  },
+  {
+    id: "buddhist-bodhisattvas",
+    prompt: "List all the Buddhist deities/figures in the term list and identify their defining attributes.",
+    answer:
+      "1. AVALOKITESHVARA — Bodhisattva of infinite compassion. 2. PADMAPANI — form of Avalokiteshvara, holds a blue lotus; purity and compassion. 3. VAJRAPANI — holds a thunderbolt; strength and power. 4. TARA — female Buddhist deity; compassion, protection, and salvation. All four are Mahayana Buddhist figures. Padmapani and Vajrapani are specifically depicted in Ajanta Cave 1 as flanking Bodhisattvas.",
+    relatedTermIds: ["avalokiteshvara", "padmapani", "vajrapani", "tara"],
   },
 ];
