@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { TERMS, CATEGORIES, Term } from "@/lib/terms";
+import WikiImage from "@/components/WikiImage";
 
 function shuffle<T>(arr: T[]): T[] {
   const a = [...arr];
@@ -195,6 +196,14 @@ export default function FlashcardMode() {
           <p className="text-center text-sm text-zinc-500 mt-2">
             Tap to reveal {front === "term" ? "definition" : "term"}
           </p>
+        )}
+
+        {showDefinition && current.term.wikiTitle && (
+          <WikiImage
+            wikiTitle={current.term.wikiTitle}
+            alt={current.term.term}
+            className="w-full max-h-48 mt-2"
+          />
         )}
 
         {showDefinition && current.term.tags && (

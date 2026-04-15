@@ -2,6 +2,7 @@
 
 import { useState, useRef, useEffect, useCallback } from "react";
 import { TERMS, Term } from "@/lib/terms";
+import WikiImage from "@/components/WikiImage";
 
 function shuffle<T>(arr: T[]): T[] {
   const a = [...arr];
@@ -169,6 +170,14 @@ export default function SpellingMode() {
             {showHint ? "Hide hint" : "Show hint"}
           </button>
         </div>
+
+        {current.wikiTitle && (
+          <WikiImage
+            wikiTitle={current.wikiTitle}
+            alt={current.term}
+            className="w-full max-h-52 object-cover"
+          />
+        )}
 
         <p className="text-zinc-200 text-lg leading-relaxed">{current.definition}</p>
 

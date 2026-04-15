@@ -4,6 +4,8 @@ export interface Term {
   definition: string;
   category: "mudra" | "site" | "deity" | "architecture" | "object" | "concept";
   tags?: string[];
+  /** Wikipedia article title used to fetch a thumbnail via the REST summary API */
+  wikiTitle?: string;
 }
 
 export const TERMS: Term[] = [
@@ -13,6 +15,7 @@ export const TERMS: Term[] = [
     definition: "Gesture of freedom from fear.",
     category: "mudra",
     tags: ["gesture", "hand", "buddhist", "hindu"],
+    wikiTitle: "Abhaya mudra",
   },
   {
     id: "ajanta-cave-1",
@@ -21,6 +24,7 @@ export const TERMS: Term[] = [
       "Buddhist cave with elaborate wall paintings and sculptures, including Bodhisattvas like Padmapani; exemplifies Gupta-era painting style. Pointed arch motif used stylistically — not structurally integral to a cave. Pillared porch with womb chamber in the back (imitates Sanchi Temple 17). Womb chamber contains Buddha making dharmachakra mudra (wheel turning/preaching). Paintings of Bodhisattvas flank the Buddha.",
     category: "site",
     tags: ["ajanta", "cave", "vihara", "painting", "gupta", "buddhist", "padmapani", "vajrapani"],
+    wikiTitle: "Ajanta Caves",
   },
   {
     id: "avalokiteshvara",
@@ -28,6 +32,7 @@ export const TERMS: Term[] = [
     definition: "The Bodhisattva of infinite compassion.",
     category: "deity",
     tags: ["bodhisattva", "buddhist", "compassion", "mahayana"],
+    wikiTitle: "Avalokiteśvara",
   },
   {
     id: "ajanta-cave-19",
@@ -36,6 +41,7 @@ export const TERMS: Term[] = [
       "Buddhist chaitya (prayer hall) with a stupa and carved façade; shows transition to more developed sculptural decoration. Combination of older stupa architecture and newer temple architecture. Standing Buddha is granting a 'boon' (answering prayer). The Buddha's hem is slashing his shin which creates a border for his body. Snail shell curls.",
     category: "site",
     tags: ["ajanta", "cave", "chaitya", "sculpture", "gupta", "buddhist", "stupa"],
+    wikiTitle: "Ajanta Caves",
   },
   {
     id: "anuradhapura",
@@ -44,6 +50,7 @@ export const TERMS: Term[] = [
       "Ancient capital city of Sri Lanka; major Buddhist center known for stupas and monastic complexes. City said to have a sapling from the original Bodhi tree at Bodhgaya.",
     category: "site",
     tags: ["sri lanka", "buddhist", "stupa", "capital"],
+    wikiTitle: "Anuradhapura",
   },
   {
     id: "bamiyan",
@@ -52,6 +59,7 @@ export const TERMS: Term[] = [
       "Massive Buddhist figures carved into an Afghan mountainside from the Gupta period. Overlap of Kushana style (heavier drapery, both shoulders covered) with Gupta-era 'pan-South Asian' style. Would have had a massive wooden facade. Face is missing. Monks came here to pray and study. Caves are also painted in Central Asian style as seen by the clothing. Destroyed by the Taliban in the early 2000s.",
     category: "site",
     tags: ["afghanistan", "buddha", "gupta", "kushana", "sculpture", "cave"],
+    wikiTitle: "Buddhas of Bamiyan",
   },
   {
     id: "bodhgaya-buddha-64",
@@ -60,6 +68,7 @@ export const TERMS: Term[] = [
       "Early Gupta Buddha image with soft modeling, calm expression, and refined spiritual presence. Shoulders not as broad, face more introspective — moving away from Yaksha style. Emphasis on curved lines, cheerfulness is gone, stylistic differences in hair.",
     category: "object",
     tags: ["buddha", "gupta", "sculpture", "bodhgaya", "buddhist"],
+    wikiTitle: "Bodh Gaya",
   },
   {
     id: "dharmachakra-mudra",
@@ -67,6 +76,7 @@ export const TERMS: Term[] = [
     definition: "Gesture of preaching the law (wheel-turning gesture).",
     category: "mudra",
     tags: ["gesture", "hand", "buddhist", "teaching", "sermon"],
+    wikiTitle: "Dharmachakra mudra",
   },
   {
     id: "descent-river-ganges",
@@ -75,6 +85,7 @@ export const TERMS: Term[] = [
       "Massive 7th-century rock-cut relief in granite at Mamallapuram depicting the Ganges' descent and divine intervention. The Ganges is a raging body of water being sent to Earth. Followers of Shiva pray hard for water during a drought. The river descends too fast and will destroy the earth. They pray for Shiva to prevent destruction. Shiva lets the river fall into his hair, taming it to flow like a stream. Water is represented by serpents.",
     category: "object",
     tags: ["mamallapuram", "pallava", "relief", "granite", "shiva", "ganges", "7th century"],
+    wikiTitle: "Descent of the Ganges (Mahabalipuram)",
   },
   {
     id: "devgarh-temple",
@@ -83,6 +94,7 @@ export const TERMS: Term[] = [
       "5th-century Gupta-era northern temple, Lalitpur district, UP Province. Early Gupta Hindu temple with narrative reliefs; key example of early structural temple architecture. On a raised platform with lots of repetition; mini shrines surround the main shrine. Doorway contains Yaksha/Yakshi guardians in contrapposto framing the entrance to an unembellished dark interior. Tower has collapsed and been poorly reconstructed. Dedicated to Vishnu with three 'blind windows' containing reliefs. Vishnu is shown sleeping on a cosmic serpent on the cosmic ocean (primordial waters). Brahma emerges from a lotus stalk from Vishnu's navel — the moment before the world comes into existence. Facade is very decorative; inside is empty — representing the invisible inner reality (atman: God's presence latently sleeping within us).",
     category: "site",
     tags: ["gupta", "vishnu", "nagara", "temple", "5th century", "north india"],
+    wikiTitle: "Dashavatara temple, Deogarh",
   },
   {
     id: "elephanta",
@@ -91,6 +103,7 @@ export const TERMS: Term[] = [
       "Late-6th-century Gupta-era rock-cut cave temple on an island near Mumbai; dedicated to Shiva, famous for large sculptural panels including the Three-headed Shiva. Island became a large temple complex. Reliefs were damaged by Portuguese artillery fire — the site was used for cannon practice.",
     category: "site",
     tags: ["shiva", "cave", "gupta", "mumbai", "trimurti", "6th century"],
+    wikiTitle: "Elephanta Caves",
   },
   {
     id: "five-rathas",
@@ -99,6 +112,7 @@ export const TERMS: Term[] = [
       "Monolithic rock-cut temples at Mamallapuram (7th century) demonstrating different temple architectural forms. Made from local granite. Hypothesized to be an architectural teaching tool — all shrines are miniaturized and none are consecrated.",
     category: "site",
     tags: ["mamallapuram", "pallava", "rock-cut", "temple", "dravida", "7th century"],
+    wikiTitle: "Pancha Rathas",
   },
   {
     id: "ganga",
@@ -106,6 +120,7 @@ export const TERMS: Term[] = [
     definition: "The river Ganges.",
     category: "deity",
     tags: ["goddess", "river", "hindu"],
+    wikiTitle: "Ganga (goddess)",
   },
   {
     id: "garbhagriha",
@@ -114,6 +129,7 @@ export const TERMS: Term[] = [
       "Womb-chamber. A windowless room that represents the inner mystery of divinity that is beyond expression.",
     category: "architecture",
     tags: ["temple", "sanctuary", "hindu", "architecture"],
+    wikiTitle: "Garbhagriha",
   },
   {
     id: "gal-vihara",
@@ -122,6 +138,7 @@ export const TERMS: Term[] = [
       "Sri Lankan site with large rock-cut Buddha statues, including a reclining Buddha in parinirvana.",
     category: "site",
     tags: ["sri lanka", "buddhist", "rock-cut", "buddha", "parinirvana"],
+    wikiTitle: "Gal Vihara",
   },
   {
     id: "govindhnagar-buddha",
@@ -130,6 +147,7 @@ export const TERMS: Term[] = [
       "Kushana-period Buddha from Mathura; shows regional style and early anthropomorphic Buddha form.",
     category: "object",
     tags: ["buddha", "mathura", "kushana", "sculpture", "early"],
+    wikiTitle: "Mathura art",
   },
   {
     id: "kailash",
@@ -138,6 +156,7 @@ export const TERMS: Term[] = [
       "The mountain which is Shiva's home. Sacred mountain believed to be Shiva's abode; symbolic in Hindu and Buddhist cosmology.",
     category: "concept",
     tags: ["shiva", "mountain", "sacred", "hindu"],
+    wikiTitle: "Mount Kailash",
   },
   {
     id: "khandariya-mahadeva",
@@ -146,6 +165,7 @@ export const TERMS: Term[] = [
       "At the Khajuraho temple complex, 11th century, northern India. Temple dedicated to Shiva; known for complex architecture and erotic sculptures.",
     category: "site",
     tags: ["khajuraho", "nagara", "shiva", "north india", "11th century"],
+    wikiTitle: "Kandariya Mahadeva temple",
   },
   {
     id: "linga",
@@ -153,6 +173,7 @@ export const TERMS: Term[] = [
     definition: "Aniconic form of Shiva.",
     category: "object",
     tags: ["shiva", "aniconic", "symbol", "hindu"],
+    wikiTitle: "Shiva linga",
   },
   {
     id: "mamallapuram",
@@ -161,6 +182,7 @@ export const TERMS: Term[] = [
       "South Indian Pallava site (7th century) known for rock-cut architecture and large reliefs like the Ganges descent.",
     category: "site",
     tags: ["pallava", "tamil nadu", "south india", "dravida", "7th century"],
+    wikiTitle: "Mahabalipuram",
   },
   {
     id: "mandapa",
@@ -168,6 +190,7 @@ export const TERMS: Term[] = [
     definition: "Temple pavilion.",
     category: "architecture",
     tags: ["temple", "hall", "architecture", "hindu"],
+    wikiTitle: "Mandapa (architecture)",
   },
   {
     id: "moonstone",
@@ -176,6 +199,7 @@ export const TERMS: Term[] = [
       "Decorated semi-circular stone at the entrances of Sri Lankan temples, symbolizing the cycle of life.",
     category: "object",
     tags: ["sri lanka", "buddhist", "threshold", "decorative"],
+    wikiTitle: "Sandakada pahana",
   },
   {
     id: "mukteshvara-temple",
@@ -184,6 +208,7 @@ export const TERMS: Term[] = [
       "In Bhubaneswar, Orissa, 10th century, northern India. Known for ornate carvings and a refined torana (gateway).",
     category: "site",
     tags: ["bhubaneswar", "odisha", "nagara", "shiva", "north india", "10th century"],
+    wikiTitle: "Mukteshvara Temple, Bhubaneswar",
   },
   {
     id: "nagarjunakonda-buddha",
@@ -192,6 +217,7 @@ export const TERMS: Term[] = [
       "Southern-style Buddha with elongated form and regional stylistic features.",
     category: "object",
     tags: ["buddha", "south india", "sculpture"],
+    wikiTitle: "Nagarjunakonda",
   },
   {
     id: "nandi",
@@ -199,6 +225,7 @@ export const TERMS: Term[] = [
     definition: "The bull vehicle of Shiva.",
     category: "deity",
     tags: ["shiva", "bull", "vahana", "hindu"],
+    wikiTitle: "Nandi (Hinduism)",
   },
   {
     id: "padmapani",
@@ -207,6 +234,7 @@ export const TERMS: Term[] = [
       "The one who holds the lotus. Form of Avalokiteshvara; Bodhisattva holding a lotus, symbolizing purity and compassion.",
     category: "deity",
     tags: ["bodhisattva", "avalokiteshvara", "ajanta", "cave 1", "painting", "lotus"],
+    wikiTitle: "Padmapani",
   },
   {
     id: "parinirvana",
@@ -214,6 +242,7 @@ export const TERMS: Term[] = [
     definition: "Nirvana after death. Release from the cycle of rebirth.",
     category: "concept",
     tags: ["buddhist", "death", "nirvana", "reclining buddha"],
+    wikiTitle: "Parinirvana",
   },
   {
     id: "ratha",
@@ -221,6 +250,7 @@ export const TERMS: Term[] = [
     definition: "Chariot. Also a temple form or shrine.",
     category: "architecture",
     tags: ["chariot", "temple", "pallava", "south india"],
+    wikiTitle: "Rath (Indian architecture)",
   },
   {
     id: "shore-temple",
@@ -229,6 +259,7 @@ export const TERMS: Term[] = [
       "8th-century temple with two sanctuaries, southern India. Temple at Mamallapuram; one of the earliest stone temples in South India.",
     category: "site",
     tags: ["mamallapuram", "pallava", "dravida", "shiva", "vishnu", "south india", "8th century"],
+    wikiTitle: "Shore Temple",
   },
   {
     id: "shiva-ardhanari",
@@ -237,6 +268,7 @@ export const TERMS: Term[] = [
       "Shiva in the form of half-male and half-female, symbolizing the unity of masculine and feminine principles.",
     category: "deity",
     tags: ["shiva", "parvati", "composite", "elephanta", "hindu"],
+    wikiTitle: "Ardhanarishvara",
   },
   {
     id: "sigiriya",
@@ -245,6 +277,7 @@ export const TERMS: Term[] = [
       "Sri Lankan rock fortress with fresco paintings and royal architecture.",
     category: "site",
     tags: ["sri lanka", "fresco", "palace", "rock"],
+    wikiTitle: "Sigiriya",
   },
   {
     id: "tara",
@@ -253,6 +286,7 @@ export const TERMS: Term[] = [
       "Female Buddhist deity; associated with compassion, protection, and salvation.",
     category: "deity",
     tags: ["bodhisattva", "female", "buddhist", "compassion"],
+    wikiTitle: "Tara (Buddhism)",
   },
   {
     id: "three-headed-shiva",
@@ -261,6 +295,7 @@ export const TERMS: Term[] = [
       "Icon from Elephanta showing Shiva's three aspects: creation, preservation, and destruction.",
     category: "deity",
     tags: ["shiva", "elephanta", "trimurti", "three-headed"],
+    wikiTitle: "Trimurti (Elephanta)",
   },
   {
     id: "torana",
@@ -268,6 +303,7 @@ export const TERMS: Term[] = [
     definition: "Gateway.",
     category: "architecture",
     tags: ["gateway", "arch", "buddhist", "hindu"],
+    wikiTitle: "Torana",
   },
   {
     id: "trishula",
@@ -276,6 +312,7 @@ export const TERMS: Term[] = [
       "Trident. Shiva's trident, symbolizing his power and three cosmic functions.",
     category: "object",
     tags: ["shiva", "weapon", "trident", "symbol"],
+    wikiTitle: "Trishula",
   },
   {
     id: "vajrapani",
@@ -284,6 +321,7 @@ export const TERMS: Term[] = [
       "One who holds the lightning bolt. Symbolizes strength and power.",
     category: "deity",
     tags: ["bodhisattva", "ajanta", "cave 1", "painting", "thunderbolt", "protector"],
+    wikiTitle: "Vajrapani",
   },
 ];
 
